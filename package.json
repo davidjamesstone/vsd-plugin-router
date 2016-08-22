@@ -1,0 +1,28 @@
+{
+  "name": "vsd-plugin-router",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidjamesstone/vsd-plugin-router.git"
+  },
+  "author": "davidjamesstone",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davidjamesstone/vsd-plugin-router/issues"
+  },
+  "homepage": "https://github.com/davidjamesstone/vsd-plugin-router#readme",
+  "dependencies": {},
+  "peerDependencies": {
+    "hapi": "^13.x.x"
+  },
+  "devDependencies": {
+    "code": "3.0.2",
+    "inert": "4.0.1",
+    "lab": "10.9.0"
+  }
+}
