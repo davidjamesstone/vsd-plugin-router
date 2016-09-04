@@ -1,4 +1,5 @@
 'use strict'
+
 const path = require('path')
 
 function getPath (mount, path) {
@@ -9,9 +10,10 @@ function getPath (mount, path) {
 }
 
 exports.register = function (server, options, next) {
-  var routes = options.routes
+  console.log(options.routes)
+  var routes = require(options.routes).routes
   var mount = options.mount
-  var relativeTo = options.relativeTo
+  var relativeTo = path.dirname(options.routes)
 
   routes.forEach(function (route) {
     if (route.ignore) {
@@ -29,17 +31,17 @@ exports.register = function (server, options, next) {
       resource = resource[name]
     }
 
-    var config = {
+    var cfg = {
       path: getPath(mount, route.path),
       method: route.method,
       config: resource
     }
 
-    if (!config.config.description) {
-      config.config.description = route.description
+    if (!cfg.config.description) {
+      cfg.config.description = route.description
     }
 
-    server.route(config)
+    server.route(cfg)
   })
 
   next()

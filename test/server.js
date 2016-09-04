@@ -12,8 +12,7 @@ server.register(require('inert'), (err) => {
   server.register({
     register: require('..'),
     options: {
-      routes: require('./routes/routes.json'),
-      relativeTo: path.join(__dirname, '/routes'),
+      routes: path.join(__dirname, 'routes/routes.json'),
       mount: '/my-routes'
     }
   }, (err) => {

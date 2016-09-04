@@ -1,37 +1,41 @@
-[
-  {
-    "method": "GET",
-    "path": "/",
-    "description": "Home page",
-    "resource": {
-      "path": "./"
+{
+  "name": "My routes",
+  "description": "My application routes",
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/",
+      "description": "Home page",
+      "resource": {
+        "path": "./"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/product",
+      "description": "Add a new product",
+      "resource": {
+        "path": "./product",
+        "name": "add"
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/product/{id}",
+      "description": "Update a product",
+      "resource": {
+        "path": "./product",
+        "name": "update"
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/product/{id}",
+      "description": "Delete a product",
+      "resource": {
+        "path": "./product",
+        "name": "remove"
+      }
     }
-  },
-  {
-    "method": "POST",
-    "path": "/product",
-    "description": "Add a new product",
-    "resource": {
-      "path": "./product",
-      "name": "add"
-    }
-  },
-  {
-    "method": "PUT",
-    "path": "/product/{id}",
-    "description": "Update a product",
-    "resource": {
-      "path": "./product",
-      "name": "update"
-    }
-  },
-  {
-    "method": "DELETE",
-    "path": "/product/{id}",
-    "description": "Delete a product",
-    "resource": {
-      "path": "./product",
-      "name": "remove"
-    }
-  }
-]
+  ]
+}
