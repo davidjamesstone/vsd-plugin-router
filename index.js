@@ -10,7 +10,6 @@ function getPath (mount, path) {
 }
 
 exports.register = function (server, options, next) {
-  console.log(options.routes)
   var routes = require(options.routes).routes
   var mount = options.mount
   var relativeTo = path.dirname(options.routes)
