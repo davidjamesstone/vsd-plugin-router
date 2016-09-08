@@ -36,7 +36,7 @@ exports.register = function (server, options, next) {
       config: resource
     }
 
-    if (!cfg.config.description) {
+    if (route.description && !cfg.config.description) {
       cfg.config.description = route.description
     }
 
