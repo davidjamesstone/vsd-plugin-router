@@ -1,10 +1,16 @@
 const Lab = require('lab')
 const Code = require('code')
-const server = require('./server')
+const composeServer = require('./server')
 const lab = exports.lab = Lab.script()
-const table = server.table()[0].table
+let table
 
-lab.test('server routing table', (done) => {
+lab.before(async () => {
+  const server = await composeServer()
+  await server.initialize()
+  table = server.table()
+})
+
+lab.test('server routing table', () => {
   Code.expect(table.length).to.equal(4)
 
   Code.expect(table[0].method).to.equal('get')
@@ -18,6 +24,4 @@ lab.test('server routing table', (done) => {
 
   Code.expect(table[3].method).to.equal('delete')
   Code.expect(table[3].path).to.equal('/my-routes/product/{id}')
-
-  done()
 })

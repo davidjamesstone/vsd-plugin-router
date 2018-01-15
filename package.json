@@ -1,6 +1,6 @@
 {
   "name": "vsd-plugin-router",
-  "version": "2.1.2",
+  "version": "3.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -16,13 +16,15 @@
     "url": "https://github.com/davidjamesstone/vsd-plugin-router/issues"
   },
   "homepage": "https://github.com/davidjamesstone/vsd-plugin-router#readme",
-  "dependencies": {},
+  "dependencies": {
+    "hapi": "^17.2.0"
+  },
   "peerDependencies": {
-    "hapi": "^13.x.x"
+    "hapi": "^17.x.x"
   },
   "devDependencies": {
-    "code": "3.0.2",
-    "inert": "4.0.1",
-    "lab": "10.9.0"
+    "code": "5.1.2",
+    "inert": "5.1.0",
+    "lab": "15.2.0"
   }
 }

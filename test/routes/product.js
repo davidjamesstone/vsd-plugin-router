@@ -1,17 +1,17 @@
 module.exports = {
   add: {
-    handler: function (request, reply) {
-      reply('hi')
+    handler: (request, h) => {
+      return 'hi'
     }
   },
   update: {
-    handler: function (request, reply) {
-      reply('hi')
+    handler: (request, h) => {
+      return 'hi'
     }
   },
   remove: {
-    handler: function (request, reply) {
-      reply('hi')
+    handler: (request, h) => {
+      return 'hi'
     }
   }
 }

@@ -1,25 +1,18 @@
 const path = require('path')
 const Hapi = require('hapi')
-const server = new Hapi.Server()
+const server = new Hapi.Server({ port: 3000 })
 
-server.connection({ port: 3000 })
-
-server.register(require('inert'), (err) => {
-  if (err) {
-    throw err
-  }
-
-  server.register({
-    register: require('..'),
+async function composeServer () {
+  await server.register(require('inert'))
+  await server.register({
+    plugin: require('..'),
     options: {
       routes: path.join(__dirname, 'routes/routes.json'),
       mount: '/my-routes'
     }
-  }, (err) => {
-    if (err) {
-      throw err
-    }
   })
-})
 
-module.exports = server
+  return server
+}
+
+module.exports = composeServer
