@@ -3,14 +3,6 @@
   "description": "My application routes",
   "routes": [
     {
-      "method": "GET",
-      "path": "/",
-      "description": "Home page",
-      "resource": {
-        "path": "./"
-      }
-    },
-    {
       "method": "POST",
       "path": "/product",
       "description": "Add a new product",

@@ -1,49 +1,41 @@
-'use strict'
-
 const path = require('path')
 
-function getPath (mount, path) {
-  if (mount) {
-    return mount + (path === '/' ? '' : path)
-  }
-  return path
-}
+module.exports = {
+  plugin: {
+    pkg: require('./package.json'),
+    multiple: true,
+    register: (server, options) => {
+      const routes = require(options.routes).routes
+      const relativeTo = path.dirname(options.routes)
 
-exports.plugin = {
-  pkg: require('./package.json'),
-  multiple: true,
-  register: (server, options) => {
-    const routes = require(options.routes).routes
-    const mount = options.mount
-    const relativeTo = path.dirname(options.routes)
+      routes.forEach(function (route) {
+        if (route.ignore) {
+          return
+        }
 
-    routes.forEach(function (route) {
-      if (route.ignore) {
-        return
-      }
+        const resourcePath = relativeTo
+          ? path.resolve(relativeTo, route.resource.path)
+          : route.resource.path
 
-      const resourcePath = relativeTo
-        ? path.resolve(relativeTo, route.resource.path)
-        : route.resource.path
+        let resource = require(resourcePath)
+        const name = route.resource.name
 
-      let resource = require(resourcePath)
-      const name = route.resource.name
+        if (name) {
+          resource = resource[name]
+        }
 
-      if (name) {
-        resource = resource[name]
-      }
+        const cfg = {
+          path: route.path,
+          method: route.method,
+          options: resource
+        }
 
-      const cfg = {
-        path: getPath(mount, route.path),
-        method: route.method,
-        config: resource
-      }
+        if (route.description && !cfg.options.description) {
+          cfg.options.description = route.description
+        }
 
-      if (route.description && !cfg.config.description) {
-        cfg.config.description = route.description
-      }
-
-      server.route(cfg)
-    })
+        server.route(cfg)
+      })
+    }
   }
 }

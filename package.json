@@ -1,10 +1,10 @@
 {
   "name": "vsd-plugin-router",
-  "version": "3.0.0",
-  "description": "",
+  "version": "3.0.1",
+  "description": "Create hapi routes from route definition config json file.",
   "main": "index.js",
   "scripts": {
-    "test": "node test"
+    "test": "lab"
   },
   "repository": {
     "type": "git",
@@ -16,15 +16,12 @@
     "url": "https://github.com/davidjamesstone/vsd-plugin-router/issues"
   },
   "homepage": "https://github.com/davidjamesstone/vsd-plugin-router#readme",
-  "dependencies": {
-    "hapi": "^17.2.0"
-  },
   "peerDependencies": {
     "hapi": "^17.x.x"
   },
   "devDependencies": {
     "code": "5.1.2",
-    "inert": "5.1.0",
+    "hapi": "17.x.x",
     "lab": "15.2.0"
   }
 }
