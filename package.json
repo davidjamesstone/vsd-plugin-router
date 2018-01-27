@@ -3,6 +3,9 @@
   "version": "3.0.1",
   "description": "Create hapi routes from route definition config json file.",
   "main": "index.js",
+  "engines": {
+    "node": ">=8.0.0"
+  },
   "scripts": {
     "test": "lab"
   },
